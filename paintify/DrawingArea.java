@@ -43,6 +43,7 @@ public class DrawingArea extends JComponent {
         });
     }
 
+    @Override
     protected void paintComponent(Graphics g) {
         if (image == null) {
             image = new BufferedImage(getSize().width, getSize().height, BufferedImage.TYPE_3BYTE_BGR);
