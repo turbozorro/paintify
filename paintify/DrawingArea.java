@@ -12,6 +12,7 @@ import java.awt.Robot;
 import java.io.File;
 import java.io.IOException;
 
+import javax.swing.JColorChooser;
 import javax.swing.JComponent;
 import javax.swing.JFileChooser;
 import javax.imageio.ImageIO;
@@ -64,7 +65,8 @@ public class DrawingArea extends JComponent {
     }
 
     public void redBrush(){
-        gr.setPaint(Color.red);
+        Color newColor = JColorChooser.showDialog(null, "Pick a Color", Color.red);
+        gr.setPaint(newColor);
     }
 
     public void blueBrush(){
