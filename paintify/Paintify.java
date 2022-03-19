@@ -9,29 +9,21 @@ import javax.swing.JPanel;
 
 public class Paintify {
 
-    JButton clearBtn, redBtn, blueBtn, greenBtn, saveBtn, loadBtn;
+    JButton clearBtn, colorBtn, saveBtn, loadBtn;
     DrawingArea drawify;
     ActionListener actionListener = new ActionListener() {
- 
-        public void actionPerformed(ActionEvent e) {
-            if (e.getSource() == clearBtn) {
-              drawify.clear();
-            } else if (e.getSource() == blueBtn) {
-              drawify.blueBrush();
-            } else if (e.getSource() == greenBtn) {
-              drawify.greenBrush();
-            } else if (e.getSource() == redBtn) {
-              drawify.redBrush();
-            } else if (e.getSource() == saveBtn) {
-              drawify.saveImage(drawify);
-            } else if (e.getSource() == loadBtn) {
-              drawify.loadImage();
-            }
-          }
-        };
-    public static void main(String[] args) {
-        new Paintify().showCanvas();
-    }
+      public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == loadBtn){
+          drawify.loadImage();
+        } else if (e.getSource() == saveBtn){
+          drawify.saveImage(drawify);
+        } else if (e.getSource() == colorBtn) {
+          drawify.setColor();
+        } else if (e.getSource() == clearBtn) {
+          drawify.clear();
+        }
+      }
+    };
 
     public void showCanvas() {
         JFrame myFrame = new JFrame("Paintify");
@@ -45,29 +37,27 @@ public class Paintify {
         JPanel toolBar = new JPanel();
         loadBtn = new JButton("Load");
         loadBtn.addActionListener(actionListener);
-        clearBtn = new JButton("Clear");
-        clearBtn.addActionListener(actionListener);
         saveBtn = new JButton("Save");
         saveBtn.addActionListener(actionListener);
-        redBtn = new JButton("Red");
-        redBtn.addActionListener(actionListener);
-        blueBtn = new JButton("Blue");
-        blueBtn.addActionListener(actionListener);
-        greenBtn = new JButton("Green");
-        greenBtn.addActionListener(actionListener);
+        colorBtn = new JButton("Set Color");
+        colorBtn.addActionListener(actionListener);
+        clearBtn = new JButton("Clear");
+        clearBtn.addActionListener(actionListener);
 
-        toolBar.add(redBtn);
-        toolBar.add(greenBtn);
-        toolBar.add(blueBtn);
-        toolBar.add(clearBtn);
-        toolBar.add(saveBtn);
         toolBar.add(loadBtn);
+        toolBar.add(saveBtn);
+        toolBar.add(colorBtn);
+        toolBar.add(clearBtn);
 
-        content.add(toolBar, BorderLayout.EAST);
+        content.add(toolBar, BorderLayout.NORTH);
 
         myFrame.setSize(1280,1024);
         myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         myFrame.setVisible(true);
 
     }
+
+    public static void main(String[] args) {
+      new Paintify().showCanvas();
+  }
 }
