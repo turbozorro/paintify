@@ -68,6 +68,7 @@ public class Paintify {
 
     }
 
+    // Método principal Main
     public static void main(String[] args) {
       new Paintify().showCanvas();
   }
